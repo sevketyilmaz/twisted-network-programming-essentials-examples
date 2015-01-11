@@ -1,10 +1,17 @@
+# Errata note: when TNPE 2ed was first printed, Twisted 12.0.0 was the latest
+# version of Twisted. Since then, passing bare strings to the errback method
+# was deprecated in Twisted 12.3.0. A failure or Exception must now be
+# passed instead.
+
 from twisted.internet import reactor, defer
 
+
 class HeadlineRetriever(object):
+
     def processHeadline(self, headline):
         if len(headline) > 50:
             self.d.errback(
-                "The headline ``%s'' is too long!" % (headline,))
+                ValueError("The headline ``%s'' is too long!" % (headline,)))
         else:
             self.d.callback(headline)
 
@@ -17,9 +24,11 @@ class HeadlineRetriever(object):
         self.d.addCallback(self._toHTML)
         return self.d
 
+
 def printData(result):
     print result
     reactor.stop()
+
 
 def printError(failure):
     print failure
