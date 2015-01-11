@@ -9,7 +9,7 @@ class MyRequestHandler(http.Request):
 
     def process(self):
         self.setHeader('Content-Type', 'text/html')
-        if self.resources.has_key(self.path):
+        if self.path in self.resources:
             self.write(self.resources[self.path])
         else:
             self.setResponseCode(http.NOT_FOUND)
