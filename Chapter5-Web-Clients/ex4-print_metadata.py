@@ -19,7 +19,7 @@ def stop(result):
     reactor.stop()
 
 if len(sys.argv) != 2:
-    print >>sys.stderr, "Usage: python print_metadata.py URL"
+    printError("Usage: python print_metadata.py URL")
     exit(1)
 
 agent = Agent(reactor)

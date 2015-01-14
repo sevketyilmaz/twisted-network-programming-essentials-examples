@@ -9,7 +9,7 @@ def stop(result):
     reactor.stop()
 
 if len(sys.argv) != 3:
-    print >>sys.stderr, "Usage: python download_resource.py <URL> <output file>"
+    printError("Usage: python download_resource.py <URL> <output file>")
     exit(1)
 
 d = downloadPage(sys.argv[1], sys.argv[2])

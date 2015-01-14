@@ -46,7 +46,7 @@ def stop(result):
     reactor.stop()
 
 if len(sys.argv) != 3:
-    print >>sys.stderr, "Usage: python post_resource.py URL 'POST DATA'"
+    printError("Usage: python post_resource.py URL 'POST DATA'")
     exit(1)
 
 agent = Agent(reactor)
